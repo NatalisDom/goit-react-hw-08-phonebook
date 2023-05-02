@@ -1,0 +1,9 @@
+.view {
+  width: 360px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
