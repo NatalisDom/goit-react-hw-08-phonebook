@@ -1,9 +1,9 @@
-import { LoginView } from 'components/LoginView/LoginView';
+import { LoginForm } from 'components/LoginForm/LoginForm';
 
 export default function Login() {
   return (
     <div>
-      <LoginView />
+      <LoginForm />
     </div>
   );
 }

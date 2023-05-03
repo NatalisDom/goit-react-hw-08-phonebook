@@ -1,6 +1,6 @@
 import css from './RegisterView.module.css';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
+import { register } from 'redux/auth/auth-operations';
 
 export const RegisterView = () => {
   const dispatch = useDispatch();
