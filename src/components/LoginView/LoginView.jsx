@@ -1,17 +1,17 @@
 import css from './LoginView.module.css';
 
 export const LoginView= () => {
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
     const view = event.currentTarget;
-    //  dispatch(
-    //    logIn({
-    //      email: view.elements.email.value,
-    //      password: view.elements.password.value,
-    //    })
-    //  );
+     dispatch(
+       logIn({
+         email: view.elements.email.value,
+         password: view.elements.password.value,
+       })
+     );
     view.reset();
   };
 

@@ -1,18 +1,22 @@
 import css from './RegisterView.module.css';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 export const RegisterView = () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
     const view = event.currentTarget;
-    //  dispatch(
-    //    register({
-    //      name: view.elements.name.value,
-    //      email: view.elements.email.value,
-    //      password: view.elements.password.value,
-    //    })
-    //  );
+
+    dispatch(
+      register({
+        name: view.elements.name.value,
+        email: view.elements.email.value,
+        password: view.elements.password.value,
+      })
+    );
+
     view.reset();
   };
 
