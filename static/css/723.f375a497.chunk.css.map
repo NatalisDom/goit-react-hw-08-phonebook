@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/723.f375a497.chunk.css","mappings":"AAAA,0BACC,WACA,CAEA,2BACA,YAAa,CACb,qBAAsB,CACtB,kBACA","sources":["components/RegisterView/RegisterView.module.css"],"sourcesContent":[".view {\n\twidth: 320px;\n }\n\n .label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin-bottom: 16px;\n }"],"names":[],"sourceRoot":""}
