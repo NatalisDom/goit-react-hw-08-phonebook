@@ -1,14 +1,39 @@
 import { useState, useEffect } from 'react';
-import css from './ContactForm.module.css';
+import css from './ContactsForm.module.css';
 import { Notify } from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addContact, fetchContacts } from 'redux/contacts/operations';
 import { addContact, fetchContacts } from 'redux/contacts/contacts-operations';
 
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import * as yup from 'yup';
+
+let userSchema = yup.object().shape({
+  name: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, 'Name should not contain numbers')
+    .required(),
+  number: yup.number('Number should not contains letters').required(),
+});
+
 function Form() {
   const [dataForm, setDataForm] = useState({
     name: '',
     number: '',
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(userSchema),
   });
 
   const dispatch = useDispatch();
@@ -26,17 +51,26 @@ function Form() {
     });
   };
 
-  const handleSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault();
-    for (const contact of contacts) {
-      if (
-        dataForm.name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()
-      ) {
-        return Notify.failure(`${dataForm.name} is already in contacts.`);
+
+    const isValid = await userSchema.isValid(dataForm);
+
+    if (isValid) {
+      for (const contact of contacts) {
+        if (
+          dataForm.name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()
+        ) {
+          return Notify.failure(`${dataForm.name} is already in contacts.`);
+        }
       }
+
+      dispatch(addContact(dataForm));
+      reset();
+      Notify.success('Сontact added successfully');
+    } else {
+      return Notify.failure('Please enter correct data');
     }
-    dispatch(addContact(dataForm));
-    reset();
   };
 
   const reset = () => {
@@ -46,40 +80,52 @@ function Form() {
     });
   };
 
+  const errorMessageName =
+    !!errors?.name?.message && 'Name should not contain numbers';
+  const errorMessageNumber =
+    !!errors?.number?.message && 'Number should not contains letters';
+
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
-      <label>
-        Name <br />
-        <input
-          className={css.input}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={dataForm.name}
-          onChange={nameChange}
-        />
-      </label>
-      <br />
-      <label>
-        Number <br />
-        <input
-          className={css.input}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          value={dataForm.number}
-          onChange={nameChange}
-        />
-      </label>
-      <br />
-      <button className={css.btn} type="submit">
-        Add contact
+    <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1 },
+      }}
+      noValidate
+      autoComplete="off"
+      onSubmit={e => handleSubmit(onSubmit(e))}
+      className={css.form}
+    >
+      <TextField
+        id="outlined-basic"
+        label="Name"
+        variant="outlined"
+        type="text"
+        name="name"
+        required
+        {...register('name')}
+        value={dataForm.name}
+        onChange={nameChange}
+        error={!!errors?.name?.message}
+        helperText={errorMessageName}
+      />
+      <TextField
+        id="outlined-basic"
+        label="Phone"
+        variant="outlined"
+        type="tel"
+        name="number"
+        required
+        {...register('number')}
+        value={dataForm.number}
+        onChange={nameChange}
+        error={!!errors?.number?.message}
+        helperText={errorMessageNumber}
+      />
+      <button type="submit" className={css.btn}>
+        Add Contact
       </button>
-    </form>
+    </Box>
   );
 }
 

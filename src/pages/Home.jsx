@@ -1,7 +1,10 @@
 const styles = {
   container: {
-    minHeight: 'calc(100vh - 50px)',
+    minHeight: 'calc(100vh - 70px)',
+    textAlign: 'center',
+
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -15,7 +18,8 @@ const styles = {
 export default function Home() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Home page, welcome</h1>
+      <h1 style={styles.title}>Welcome to your personal PhoneBook!</h1>
+      <p>After registration, you can keep track of your contacts</p>
     </div>
   );
 }
