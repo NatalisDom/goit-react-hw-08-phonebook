@@ -2,17 +2,28 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/auth-operations';
 import { useAuth } from 'hooks';
 
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import { clearnedContacts } from 'redux/contacts/contacts-slice';
+
 import css from './UserMenu.module.css';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
+  const handleLogOut = () => {
+    dispatch(logOut());
+    dispatch(clearnedContacts());
+  };
   return (
     <div className={css.wrapper}>
       <p className={css.username}>Welcome, {user.name} </p>
-      <button type="button" onClick={() => dispatch(logOut())}>
-        Logout
-      </button>
+      <Stack spacing={2} direction="row">
+        <Button className={css.button} onClick={() => handleLogOut()}>
+          Logout
+        </Button>
+      </Stack>
     </div>
   );
 };

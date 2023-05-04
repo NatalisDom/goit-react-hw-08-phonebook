@@ -1,16 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+
 import { logIn } from 'redux/auth/auth-operations';
-import { clearnedContacts } from 'redux/contacts/contacts-slice';
+
 import css from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(clearnedContacts());
-  }, []);
-
 
   const handleSubmit = e => {
     e.preventDefault();

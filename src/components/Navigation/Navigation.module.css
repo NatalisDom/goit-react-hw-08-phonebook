@@ -3,9 +3,14 @@
   text-decoration: none;
   padding: 14px;
   font-weight: 700;
-  color: #0f1d23;
+  color: white;
 }
 
 .link.active {
-  color: #087956;
+  color: #e84a5f;
+}
+
+.navigation {
+  color: white;
+  margin-right: auto;
 }
