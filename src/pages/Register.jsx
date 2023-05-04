@@ -1,4 +1,4 @@
-import { RegisterView } from 'components/RegisterView/RegisterView';
+import { RegisterView } from 'components/RegisterForm/RegisterForm';
 
 export default function Login() {
   return (

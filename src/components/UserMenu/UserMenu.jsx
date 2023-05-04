@@ -4,7 +4,7 @@ import { useAuth } from 'hooks';
 
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+
 import { clearnedContacts } from 'redux/contacts/contacts-slice';
 
 import css from './UserMenu.module.css';
@@ -20,9 +20,9 @@ export const UserMenu = () => {
     <div className={css.wrapper}>
       <p className={css.username}>Welcome, {user.name} </p>
       <Stack spacing={2} direction="row">
-        <Button className={css.button} onClick={() => handleLogOut()}>
+        <button className={css.button} onClick={() => handleLogOut()}>
           Logout
-        </Button>
+        </button>
       </Stack>
     </div>
   );

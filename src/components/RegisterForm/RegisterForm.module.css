@@ -1,18 +1,11 @@
 .form {
-  width: 350px;
-  margin: 60px auto 20px auto;
-  display: flex;
-  flex-direction: column;
+	 width: 320px;
 }
 
 .label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
-}
-
-.input {
-  width: 100%;
+  margin-bottom: 16px;
 }
 
 .button {
@@ -31,4 +24,21 @@
 
 .button:hover {
   background-color: rgba(25, 118, 210, 0.9);
+}
+
+.form {
+  width: 350px;
+  margin: 60px auto 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input {
+  width: 100%;
 }
