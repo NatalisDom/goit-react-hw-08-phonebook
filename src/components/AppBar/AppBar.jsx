@@ -9,13 +9,11 @@ import Toolbar from '@mui/material/Toolbar';
 
 import { useAuth } from 'hooks';
 
-// import css from './AppBar.module.css';
-
 export const AppBars = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{}}>
       <AppBar position="static">
         <Toolbar>
           <Navigation />
@@ -23,11 +21,5 @@ export const AppBars = () => {
         </Toolbar>
       </AppBar>
     </Box>
-    //  <>
-    //    <header className={css.header}>
-    //      <Navigation />
-    //      {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    //    </header>
-    //  </>
   );
 };

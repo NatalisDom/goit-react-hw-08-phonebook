@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { filterContact } from 'redux/contacts/contacts-slice';
@@ -16,6 +16,7 @@ const Filter = () => {
         className={css.input}
         onChange={e => dispatch(filterContact(e.target.value))}
         fullWidth
+       
       />
     </Box>
   );
@@ -23,7 +24,7 @@ const Filter = () => {
 
 export default Filter;
 
-// Filter.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   filter: PropTypes.func.isRequired,
-// };
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  filter: PropTypes.func.isRequired,
+};

@@ -1,21 +1,21 @@
 .form {
   width: 500px;
   margin: 0 auto;
-  border: 1px solid rgb(187, 150, 175);
+  border: 2px solid #1976d2;
   border-radius: 5px;
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: bisque;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
 }
 
 .btn {
   background: none;
-  border: solid 2px #8f0972;
+  border: solid 2px #1976d2;
   border-radius: 5px;
-  color: #870946;
+  color: #1976d2;
   cursor: pointer;
   display: inline-block;
   font-family: 'Helvetica', Arial, sans-serif;
@@ -29,13 +29,7 @@
 }
 
 .btn:hover {
-  background: #870946;
+  background:#1976d2;
   color: #f2f3eb;
 }
 
-/* .input {
-  border-radius: 5px;
-  margin: 5px 0;
-  padding: 5px 10px;
-  font-size: 14px;
-} */
